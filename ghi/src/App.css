@@ -1,7 +1,4 @@
-nav > div {
-  display: inline-block;
-  padding: 2em 2em;
-}
+
 
 /* body {
   background-image: url('/images/pexels-jeremy-bishop-underwater.jpg');
@@ -23,18 +20,7 @@ nav > div {
   }
 }
 
-.App-header {
-  /* background-color: #282c34; */
-  /* min-height: 100vh; */
-  display: flex;
-  /* flex-direction: row; */
-  /* flex-wrap: nowrap;  */
-  align-items: center;
-  justify-content: right;
-  /* font-size: calc(10px + 2vmin); */
-  color: black;
-  border-bottom: black;
-}
+
 
 /* .App-link {
   color: #61dafb;
@@ -47,9 +33,4 @@ nav > div {
   to {
     transform: rotate(360deg);
   }
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
 }
