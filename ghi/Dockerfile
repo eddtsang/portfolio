@@ -1,16 +1,27 @@
-FROM node:18-alpine
+FROM node:20-alpine AS base
 
-WORKDIR /ghi
+WORKDIR /app
 
 COPY package*.json ./
 
 RUN npm install
-RUN npm install -g serve
-
 COPY . .
 
+## DEV
+FROM base AS development
+## ENV WATCHPACK_POLLING=true
+EXPOSE 3000
+CMD ["npm", "start"]
+
+## Prod
+FROM base AS builder
 RUN npm run build
 
-CMD ["serve", "-s", "build"]
+FROM node:20-alpine AS prod
+RUN npm install -g serve
+
+WORKDIR /app
+COPY --from=builder /app/build ./build
 
 EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]
