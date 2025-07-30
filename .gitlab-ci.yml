@@ -1,0 +1,5 @@
+build:
+  image:
+  stage: build
+  script:
+    - npm create-react-app ghi
