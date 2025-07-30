@@ -1,0 +1,16 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1em 2em;
+  gap:1.5em;
+}
+
+nav > div {
+  /* display: inline-flexbox; */
+  /* padding: 2em 2em; */
+  cursor: pointer;
+  padding: 0.5em 1em;
+  white-space: nowarp;
+}
