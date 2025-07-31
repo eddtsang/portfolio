@@ -1,15 +1,12 @@
+## Common base stage
 FROM node:20-alpine AS base
-
 WORKDIR /app
-
 COPY package*.json ./
-
 RUN npm install
 COPY . .
 
 ## DEV
 FROM base AS development
-## ENV WATCHPACK_POLLING=true
 EXPOSE 3000
 CMD ["npm", "start"]
 
