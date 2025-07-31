@@ -7,13 +7,16 @@ COPY . .
 
 ## DEV
 FROM base AS development
+WORKDIR /app
+COPY --from=base /app/node_modules ./node_modules
 EXPOSE 3000
 CMD ["npm", "start"]
 
-## Prod
+## Build stage
 FROM base AS builder
 RUN npm run build
 
+## PROD stage
 FROM node:20-alpine AS prod
 RUN npm install -g serve
 
