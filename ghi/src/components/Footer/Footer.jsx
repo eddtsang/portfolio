@@ -10,9 +10,9 @@ function Footer() {
         <footer className={styles.footer}>
             <p>© 2025 Eddie Tsang</p>
             <div>
-                <img src={gitlab_dark} alt="GitLab" />
-                <img src={github_dark} alt="GitHub" />
-                <img src={linked_dark} alt="LinkedIn" />
+                <img className={styles.footer_img} src={gitlab_dark} alt="GitLab" />
+                <img className={styles.footer_img} src={github_dark} alt="GitHub" />
+                <img className={styles.footer_img} src={linked_dark} alt="LinkedIn" />
             </div>
         </footer>
     );
