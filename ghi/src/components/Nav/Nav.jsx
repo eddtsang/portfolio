@@ -1,27 +1,31 @@
-// import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Nav.module.css";
 
 function Nav() {
+    const location = useLocation();
+
     return (
         <nav className={styles.nav}>
-            <a href="/">
-                <button className={styles.button}>Home</button>
-            </a>
-            <a href="/aboutme">
-                <button className={styles.button}>About Me</button>
-            </a>
-            <a href="/projects">
-                <button className={styles.button}>Projects</button>
-            </a>
-            <a href="contact">
-                <button className={styles.button}>Contact</button>
-            </a>
-            {/*
-            <Link to="/"><div>Home</div></Link>
-            <Link to="/aboutme"><div>About Me</div></Link>
-            <Link to="/projects"><div>Projects</div></Link>
-            <Link to="/contact"><div>Contact</div></Link>
-            */}
+            <Link to="/">
+                <button className={`${styles.button} ${location.pathname === "/" ? styles.active : ""}`}>
+                    Home
+                </button>
+            </Link>
+            <Link to="/aboutme">
+                <button className={`${styles.button} ${location.pathname === "/aboutme" ? styles.active : ""}`}>
+                    About Me
+                </button>
+            </Link>
+            <Link to="/projects">
+                <button className={`${styles.button} ${location.pathname === "/projects" ? styles.active : ""}`}>
+                    Projects
+                </button>
+            </Link>
+            <Link to="/contact">
+                <button className={`${styles.button} ${location.pathname === "/contact" ? styles.active : ""}`}>
+                    Contact
+                </button>
+            </Link>
         </nav>
     );
 };
