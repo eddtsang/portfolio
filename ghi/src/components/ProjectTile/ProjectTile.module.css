@@ -12,7 +12,7 @@
 
 .project_tile:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(166, 213, 250, 0.2);
 }
 
 .project_image {
