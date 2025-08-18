@@ -38,6 +38,7 @@ build:
 pages:
   stage: deploy
   image: alpine:latest
+  publish: pubilc
   script:
     # Copy the built files to the pages directory
     - cp -r ghi/public/* .
