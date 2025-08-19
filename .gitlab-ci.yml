@@ -1,17 +1,54 @@
-# Define stages
-stages:
-  - build
-  - deploy
+# # Define stages
+# stages:
+#   - build
+#   - deploy
 
-# Cache node modules for faster builds
-cache:
-  paths:
-    - ghi/node_modules/
+# # Cache node modules for faster builds
+# cache:
+#   paths:
+#     - ghi/node_modules/
 
-# Build stage
-build:
-  stage: build
-  image: node:18-alpine
+# # Build stage
+# build:
+#   stage: build
+#   image: node:18-alpine
+#   script:
+#     - cd ghi
+#     - npm ci
+#     - npm run build
+#     - mv build ../public
+#   artifacts:
+#     paths:
+#       - public
+#     expire_in: 1 hour
+#   only:
+#     - main
+#     - master
+#   except:
+#     - tags
+
+# # Deploy to GitLab Pages
+# pages:
+#   stage: deploy
+#   image: alpine:latest
+#   publish: public
+#   script:
+#   artifacts:
+#     paths:
+#       - public
+#     expire_in: 1 month
+#   only:
+#     - main
+#     - master
+#   except:
+#     - tags
+#   dependencies:
+#     - build
+
+image: node:18-alpine
+
+pages:
+  stage: deploy
   script:
     - cd ghi
     - npm ci
@@ -20,27 +57,5 @@ build:
   artifacts:
     paths:
       - public
-    expire_in: 1 hour
   only:
     - main
-    - master
-  except:
-    - tags
-
-# Deploy to GitLab Pages
-pages:
-  stage: deploy
-  image: alpine:latest
-  publish: public
-  script:
-  artifacts:
-    paths:
-      - public
-    expire_in: 1 month
-  only:
-    - main
-    - master
-  except:
-    - tags
-  dependencies:
-    - build
