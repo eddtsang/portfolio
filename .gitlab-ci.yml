@@ -19,7 +19,7 @@ build:
     - mv build ../public
   artifacts:
     paths:
-      - ghi/public
+      - public
     expire_in: 1 hour
   only:
     - main
@@ -32,9 +32,6 @@ pages:
   stage: deploy
   image: alpine:latest
   publish: public
-  script:
-    # Copy the built files to the pages directory
-    - cp -r ghi/public/* .
   artifacts:
     paths:
       - public
