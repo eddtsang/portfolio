@@ -1,6 +1,3 @@
-# GitLab CI/CD configuration for React app deployment to GitLab Pages
-# This file is at the portfolio root and builds the React app from the ghi/ subdirectory
-
 # Define stages
 stages:
   - build
@@ -16,14 +13,10 @@ build:
   stage: build
   image: node:18-alpine
   script:
-    # Navigate to the React app directory
     - cd ghi
-    # Install dependencies
-    - npm ci --only=production
-    # Build the React app
+    - npm ci
     - npm run build
-    # Create public directory for GitLab Pages
-    - mv build public
+    - mv build ../public
   artifacts:
     paths:
       - ghi/public
@@ -38,13 +31,13 @@ build:
 pages:
   stage: deploy
   image: alpine:latest
-  publish: pubilc
+  publish: public
   script:
     # Copy the built files to the pages directory
     - cp -r ghi/public/* .
   artifacts:
     paths:
-      - .
+      - public
     expire_in: 1 month
   only:
     - main
